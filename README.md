@@ -21,7 +21,6 @@ def main():
     logger.error("This is a Error Message")
     logger.critical("This is a Critical Message")
 main()
-
 ```
 
 ```

@@ -1,10 +1,12 @@
 # logger
 
-Simple logger function with colored LogLevel for other scripts and designed to run inside Docker container 
+[![Build Status](https://drone.pyas.de/api/badges/Kim/logger/status.svg)](https://drone.pyas.de/Kim/logger)
 
-Debug can be enabled by setting the environment variable 
+Simple logger function with colored LogLevel designed to run inside Docker container 
 
-*DEBUG_MODE = True*
+> Debug can be enabled by setting the environment variable
+> 
+> **DEBUG_MODE** = *True*
 
 ## Usage example
 ```python

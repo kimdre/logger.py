@@ -1,0 +1,33 @@
+kind: pipeline
+type: docker
+name: default
+
+workspace:
+  path: /drone/src
+
+steps:
+  - name: Prepare Environment
+    image: python:3.8-alpine
+    pull: if-not-exists
+    environment:
+      TZ: 'Europe/Berlin'
+    commands:
+      - apk --no-cache add gcc musl-dev tzdata
+      - pip3 install --no-cache-dir -r requirements.txt
+
+  - name: Test App
+    image: python:3.8-alpine
+    pull: if-not-exists
+    environment:
+      DEBUG_MODE: 'True'
+      TZ: 'Europe/Berlin'
+    commands:
+      - python3 -c "from loghandler import logger
+        def main():
+          logger.debug("This is a Debug Message")
+          logger.info("This is a Info Message")
+          logger.warning("This is a Warning Message")
+          logger.error("This is a Error Message")
+          logger.critical("This is a Critical Message")
+
+        main()"

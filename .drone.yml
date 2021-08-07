@@ -22,7 +22,8 @@ steps:
       DEBUG_MODE: 'True'
       TZ: 'Europe/Berlin'
     commands:
-      - python3 -c "from loghandler import logger
+      - |
+        python3 -c "from loghandler import logger
         def main():
           logger.debug("This is a Debug Message")
           logger.info("This is a Info Message")

@@ -23,7 +23,7 @@ steps:
       TZ: 'Europe/Berlin'
     commands:
       - |
-        python3 -c "from loghandler import logger
+        python3 -c 'from loghandler import logger;
         def main():
           logger.debug("This is a Debug Message")
           logger.info("This is a Info Message")
@@ -31,4 +31,4 @@ steps:
           logger.error("This is a Error Message")
           logger.critical("This is a Critical Message")
 
-        main()"
+        main()'

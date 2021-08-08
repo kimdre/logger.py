@@ -6,7 +6,7 @@ import colorlog
 
 
 def loghandler():
-    debug_mode = os.getenv('DEBUG_MODE', False)
+    debug_mode = os.getenv('DEBUG_MODE', "False")
     if debug_mode.lower() == "false":
         debug_mode = False
 

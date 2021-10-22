@@ -2,7 +2,7 @@
 
 [![Build Status](https://drone.pyas.de/api/badges/Kim/logger/status.svg)](https://drone.pyas.de/Kim/logger)
 
-Simple logger function with colored LogLevel designed to run inside Docker container 
+Simple logger class with colored LogLevel designed to run inside Docker container 
 
 > Debug can be enabled by setting the environment variable
 > 

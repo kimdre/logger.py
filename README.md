@@ -2,7 +2,7 @@
 
 [![Build Status](https://drone.pyas.de/api/badges/Kim/logger/status.svg)](https://drone.pyas.de/Kim/logger)
 
-Simple logger function with colored LogLevel designed to run inside Docker container 
+Simple logger class with colored LogLevel designed to run inside Docker container 
 
 > Debug can be enabled by setting the environment variable
 > 
@@ -33,3 +33,6 @@ main()
 [Fri, 06 Aug 2021 13:36:09] ERROR [test.py.main:10] This is a Error Message
 [Fri, 06 Aug 2021 13:36:09] CRITICAL [test.py.main:11] This is a Critical Message
 ```
+
+## Credits
+Repo Icon made by [Smartline](https://www.flaticon.com/authors/smartline "Smartline") from [www.flaticon.com](https://www.flaticon.com/ "Flaticon")

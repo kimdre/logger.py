@@ -39,6 +39,3 @@ def loghandler():
     _logger.addHandler(handler)
 
     return _logger
-
-
-logger = loghandler()

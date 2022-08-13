@@ -2,16 +2,12 @@
 
 [![Build Status](https://drone.pyas.de/api/badges/Kim/logger.py/status.svg)](https://drone.pyas.de/Kim/logger.py)
 
-Simple logger class with colored LogLevel designed to run inside Docker container 
-
-> Use the environment variable `LOG_LEVEL` to set the log level.
-> 
-> **LOG_LEVEL** = *debug*
+Simple logger function with colored LogLevel designed to run inside Docker container 
 
 ## Possible values
 Values can be set case insensitive (DEBUG, debug, Debug).
 - debug
-- info
+- info (default value)
 - warn
 - warning
 - crit
@@ -21,6 +17,11 @@ Values can be set case insensitive (DEBUG, debug, Debug).
 - Python 3.10 or higher
 
 ## Usage example
+
+> Use the environment variable `LOG_LEVEL` to set the log level.
+> 
+> **LOG_LEVEL** = *debug*
+
 ```python
 # Setting LOG_LEVEL with `os.environ` is only necessary if environment variable has not been set before (e.g. outside Docker)
 import os

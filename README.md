@@ -4,15 +4,27 @@
 
 Simple logger class with colored LogLevel designed to run inside Docker container 
 
-> Debug can be enabled by setting the environment variable
+> Use the environment variable `LOG_LEVEL` to set the log level.
 > 
-> **DEBUG_MODE** = *True*
+> **LOG_LEVEL** = *debug*
+
+## Possible values
+Values can be set case insensitive (DEBUG, debug, Debug).
+- debug
+- info
+- warn
+- warning
+- crit
+- critical
+
+## Requirements 
+- Python 3.10 or higher
 
 ## Usage example
 ```python
-# Usage with os only necessary if environment variable has not been set before (e.g. outside Docker)
+# Setting LOG_LEVEL with `os.environ` is only necessary if environment variable has not been set before (e.g. outside Docker)
 import os
-os.environ['DEBUG_MODE'] = 'True'
+os.environ['LOG_LEVEL'] = 'DEBUG'
 
 from loghandler import logger
 

@@ -6,18 +6,26 @@ import colorlog
 
 
 def loghandler():
-    debug_mode = os.getenv('DEBUG_MODE', "False")
-    if debug_mode.lower() == "false":
-        debug_mode = False
-
     _logger = colorlog.getLogger(__name__)
-    if debug_mode:
-        _logger.setLevel(logging.DEBUG)
-    else:
-        _logger.setLevel(logging.INFO)
+
+    loglevel = os.getenv('LOG_LEVEL', "INFO")
+
+    match loglevel.lower():
+        case "debug":
+            _logger.setLevel(logging.DEBUG)
+        case "info":
+            _logger.setLevel(logging.INFO)
+        case "warn" | "warning":
+            _logger.setLevel(logging.WARNING)
+        case "error":
+            _logger.setLevel(logging.ERROR)
+        case "crit" | "critical":
+            _logger.setLevel(logging.CRITICAL)
+        case _:
+            raise ValueError("Definied value of LOG_LEVEL is not known. Possible values are debug, info, warn, warning, error, crit and critical.")
 
     handler = colorlog.StreamHandler(sys.stdout)
-    if debug_mode:
+    if loglevel:
         handler.setLevel(logging.DEBUG)
     else:
         handler.setLevel(logging.INFO)

@@ -6,16 +6,18 @@ workspace:
   path: /drone/src
 
 steps:
-  - name: test with DEBUG_MODE
-    image: python:alpine
+  - name: LOG_LEVEL var set to debug
+    depends_on: 
+      - clone
+    image: python:3.10-alpine
     pull: if-not-exists
     environment:
-      DEBUG_MODE: 'True'
+      LOG_LEVEL: 'debug'
       TZ: 'Europe/Berlin'
     commands:
       - apk --no-cache add gcc musl-dev tzdata
       - pip3 install --no-cache-dir -r requirements.txt
-      - echo "$DEBUG_MODE"
+      - echo "$LOG_LEVEL"
       - |
         python3 -c 'from loghandler import logger;
         def main():
@@ -27,16 +29,40 @@ steps:
 
         main()'
 
-  - name: test without DEBUG_MODE
-    image: python:alpine
+  - name: LOG_LEVEL var set to warning
+    depends_on: 
+      - clone
+    image: python:3.10-alpine
     pull: if-not-exists
     environment:
-      DEBUG_MODE: 'False'
+      LOG_LEVEL: 'warning'
       TZ: 'Europe/Berlin'
     commands:
       - apk --no-cache add gcc musl-dev tzdata
       - pip3 install --no-cache-dir -r requirements.txt
-      - echo "$DEBUG_MODE"
+      - echo "$LOG_LEVEL"
+      - |
+        python3 -c 'from loghandler import logger;
+        def main():
+          logger.debug("This is a Debug Message")
+          logger.info("This is a Info Message")
+          logger.warning("This is a Warning Message")
+          logger.error("This is a Error Message")
+          logger.critical("This is a Critical Message")
+
+        main()'
+
+  - name: Unset LOG_LEVEL var
+    depends_on: 
+      - clone
+    image: python:3.10-alpine
+    pull: if-not-exists
+    environment:
+      TZ: 'Europe/Berlin'
+    commands:
+      - apk --no-cache add gcc musl-dev tzdata
+      - pip3 install --no-cache-dir -r requirements.txt
+      - echo "$LOG_LEVEL"
       - |
         python3 -c 'from loghandler import logger;
         def main():

@@ -1,4 +1,4 @@
-# logger
+# logger.py
 
 [![Build Status](https://drone.pyas.de/api/badges/Kim/logger/status.svg)](https://drone.pyas.de/Kim/logger)
 
